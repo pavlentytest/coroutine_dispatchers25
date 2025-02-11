@@ -23,6 +23,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        /*
+          CoroutineScope(Dispatchers.Main).launch {
+            val originalDeferred = async(Dispatchers.IO) { getOriginalBitmap() }
+            val originalBitmap = originalDeferred.await()
+            loadImage(originalBitmap)
+            val originalDeferredBnW = async(Dispatchers.Default) { applyFilter(originalBitmap) }
+            loadImageBnW(originalDeferredBnW.await())
+        }
+         */
+
+
         CoroutineScope(Dispatchers.IO).launch {
             // так можно
             val bitmap = getOriginalBitmap()
